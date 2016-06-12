@@ -9,8 +9,20 @@ import com.taxcalculator.domain.entities.Item;
 import com.taxcalculator.receipt.Receipt;
 import com.taxcalculator.util.StringUtils;
 
+/**
+ * Main class of Tax Calculator Application
+ * 
+ * @author ankit
+ *
+ */
 public class TaxCalculatorApplication {
 
+	/**
+	 * Generates Receipt from the given products list
+	 * 
+	 * @param inputs
+	 * @return {@link Receipt}
+	 */
 	public Receipt generateReceipt(String[] inputs) {
 
 		List<Item> items = generateItemData(inputs);

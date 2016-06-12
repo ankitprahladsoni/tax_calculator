@@ -8,8 +8,20 @@ import com.taxcalculator.domain.entities.Item;
 import com.taxcalculator.util.MathUtils;
 import com.taxcalculator.util.StringUtils;
 
+/**
+ * Builds list of {@link Item} from given inputs
+ * 
+ * @author ankit
+ *
+ */
 public class ItemBuilder {
 
+	/**
+	 * Converts itemData map to {@link Item}
+	 * 
+	 * @param itemsData
+	 * @return list of {@link Item}
+	 */
 	public static List<Item> convertToItems(List<Map<String, String>> itemsData) {
 		List<Item> items = new ArrayList<>();
 		for (Map<String, String> itemData : itemsData) {
@@ -19,7 +31,7 @@ public class ItemBuilder {
 		return items;
 	}
 
-	public static Item convertToItem(Map<String, String> itemData) {
+	private static Item convertToItem(Map<String, String> itemData) {
 
 		String itemName = getName(itemData);
 		int quantity = getQuantity(itemData);

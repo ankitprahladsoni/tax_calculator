@@ -5,6 +5,12 @@ import java.util.List;
 import com.taxcalculator.domain.entities.Item;
 import com.taxcalculator.util.MathUtils;
 
+/**
+ * Domain class for holding final Item details and tax
+ * 
+ * @author ankit
+ *
+ */
 public class Receipt {
 
 	private String itemDescription;

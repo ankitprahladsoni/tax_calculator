@@ -5,6 +5,12 @@ import org.junit.Test;
 
 import com.taxcalculator.receipt.Receipt;
 
+/**
+ * Test class for {@link TaxCalculatorApplication}
+ * 
+ * @author ankit
+ *
+ */
 public class TaxCalculatorApplicationTest {
 
 	private TaxCalculatorApplication taxCalculatorApplication = new TaxCalculatorApplication();

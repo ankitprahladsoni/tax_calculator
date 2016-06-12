@@ -2,6 +2,12 @@ package com.taxcalculator.domain.entities;
 
 import com.taxcalculator.util.MathUtils;
 
+/**
+ * Domain class to hold Item values
+ * 
+ * @author ankit
+ *
+ */
 public class Item {
 
 	String name;
