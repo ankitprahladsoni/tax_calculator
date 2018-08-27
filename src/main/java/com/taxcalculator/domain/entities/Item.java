@@ -2,6 +2,8 @@ package com.taxcalculator.domain.entities;
 
 import com.taxcalculator.util.MathUtils;
 
+import java.util.stream.Stream;
+
 /**
  * Domain class to hold Item values
  *
@@ -15,12 +17,12 @@ public class Item {
     private boolean isExempted;
     private double basePrice;
 
-    public Item(String name, int quantity, double basePrice, boolean isExempted, boolean isImported) {
+     public Item(String quantity, String name, String basePrice) {
         this.name = name;
-        this.quantity = quantity;
-        this.basePrice = basePrice;
-        this.isExempted = isExempted;
-        this.isImported = isImported;
+        this.quantity = Integer.valueOf(quantity);
+        this.basePrice = Double.valueOf(basePrice);
+        this.isImported = isImported();
+        this.isExempted = isExempted();
     }
 
     public String getName() {
@@ -51,6 +53,15 @@ public class Item {
     private double getBasicSalesTaxAmount() {
         double basicSalesTax = isExempted ? 0 : 0.1;
         return basePrice * basicSalesTax;
+    }
+
+    private boolean isImported() {
+        return this.name.contains("imported");
+    }
+
+    private boolean isExempted() {
+        return Stream.of("book", "chocolate", "pill")
+                .anyMatch(exemptedItem -> this.name.contains(exemptedItem));
     }
 
 }

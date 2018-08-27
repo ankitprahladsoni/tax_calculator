@@ -1,15 +1,10 @@
 package com.taxcalculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import com.taxcalculator.domain.builder.ItemBuilder;
 import com.taxcalculator.domain.entities.Item;
+import com.taxcalculator.domain.factory.ItemFactory;
 import com.taxcalculator.receipt.Receipt;
-import com.taxcalculator.util.StringUtils;
+
+import java.util.List;
 
 /**
  * Main class of Tax Calculator Application
@@ -26,16 +21,7 @@ class TaxCalculatorApplication {
      */
     Receipt generateReceipt(String[] inputs) {
 
-        List<Item> items = generateItemData(inputs);
+        List<Item> items = ItemFactory.from(inputs);
         return new Receipt(items);
-    }
-
-    private List<Item> generateItemData(String[] inputs) {
-        List<Map<String, String>> itemsData = generateItemsData(inputs);
-        return ItemBuilder.convertToItems(itemsData);
-    }
-
-    private List<Map<String, String>> generateItemsData(String[] inputs) {
-        return Arrays.stream(inputs).map(StringUtils::separateData).collect(Collectors.toList());
     }
 }
