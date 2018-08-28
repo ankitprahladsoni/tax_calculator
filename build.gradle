@@ -16,6 +16,10 @@ buildscript {
     }
 }
 
+test {
+	useJUnitPlatform()
+}
+
 repositories {
     mavenCentral()
 }
