@@ -12,17 +12,17 @@ public class Receipt {
 
     public Receipt(List<Item> items) {
 
-        StringBuilder itemDetails = new StringBuilder();
+        StringBuilder itemDetailsBuilder = new StringBuilder();
 
         for (Item item : items) {
-            itemDetails.append(item.toString()).append("\n");
+            itemDetailsBuilder.append(item.toString()).append("\n");
             totalSalesTax += item.getTaxAmount();
             totalAmount += item.getFinalPrice();
         }
         totalAmount = MathUtils.roundOffAmount(totalAmount);
         totalSalesTax = MathUtils.roundOffAmount(totalSalesTax);
 
-        this.itemDetails = itemDetails.toString();
+        itemDetails = itemDetailsBuilder.toString();
     }
 
     public double getTotalAmount() {

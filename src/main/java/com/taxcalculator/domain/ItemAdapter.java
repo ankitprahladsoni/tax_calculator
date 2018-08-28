@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
 public class ItemAdapter {
     private static final String ITEM_ENTRY_REGEX = "(\\d+) ([\\w\\s]* )at (\\d+.\\d{2})";
 
+    private ItemAdapter() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static Item createItemFromString(String input) {
         Pattern pattern = Pattern.compile(ITEM_ENTRY_REGEX);
         Matcher matcher = pattern.matcher(input);

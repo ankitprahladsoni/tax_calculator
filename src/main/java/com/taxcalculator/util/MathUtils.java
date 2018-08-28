@@ -2,6 +2,10 @@ package com.taxcalculator.util;
 
 public class MathUtils {
 
+    private MathUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static double roundOffTax(double number) {
         return Math.ceil(number * 20) / 20;
     }

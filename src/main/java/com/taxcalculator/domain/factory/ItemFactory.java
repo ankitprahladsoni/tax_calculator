@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class ItemFactory {
 
+    private ItemFactory() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static List<Item> from(String[] inputs) {
         return Arrays.stream(inputs)
                 .map(ItemFactory::from)
