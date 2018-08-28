@@ -5,45 +5,40 @@ import java.util.List;
 import com.taxcalculator.domain.entities.Item;
 import com.taxcalculator.util.MathUtils;
 
-/**
- * Domain class for holding final Item details and tax
- *
- * @author ankit
- */
 public class Receipt {
-
-    private String itemDescription;
     private double totalSalesTax = 0.0;
     private double totalAmount = 0.0;
+    private String itemDetails;
 
-    public double getTotalSalesTax() {
-        return totalSalesTax;
+    public Receipt(List<Item> items) {
+
+        StringBuilder itemDetails = new StringBuilder();
+
+        for (Item item : items) {
+            itemDetails.append(item.toString()).append("\n");
+            totalSalesTax += item.getTaxAmount();
+            totalAmount += item.getFinalPrice();
+        }
+        totalAmount = MathUtils.roundOffAmount(totalAmount);
+        totalSalesTax = MathUtils.roundOffAmount(totalSalesTax);
+
+        this.itemDetails = itemDetails.toString();
     }
 
     public double getTotalAmount() {
         return totalAmount;
     }
 
-    public Receipt(List<Item> items) {
-        StringBuilder itemDetails = new StringBuilder();
-        items.forEach(item -> {
-            itemDetails.append(item.getQuantity())
-                    .append(" ")
-                    .append(item.getName())
-                    .append(" : ")
-                    .append(item.getFinalPrice())
-                    .append("\n");
-            totalSalesTax += item.getTaxAmount();
-            totalAmount += item.getFinalPrice();
-        });
-
-        itemDescription = itemDetails.toString();
-        totalSalesTax = MathUtils.roundOffTax(totalSalesTax);
+    public double getTotalSalesTax() {
+        return totalSalesTax;
     }
 
     @Override
     public String toString() {
-        return "\n\n" + "Receipt \n" + itemDescription + "Sales Taxes: " + totalSalesTax + "\nTotal: " + totalAmount;
+        return "Receipt" + "\n"
+                + itemDetails
+                + "Sales Taxes: " + totalSalesTax + "\n"
+                + "Total: " + totalAmount
+                +"\n*******************************\n";
     }
-
 }
