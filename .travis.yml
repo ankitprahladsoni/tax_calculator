@@ -2,4 +2,4 @@ language: java
 install: true
 
 script:
-  - gradle sonarqube -Dsonar.organization=ankitprahladsoni-github -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=cfaeee22d23ec0797c5c99ab3e09ee3f825cfc1b
+  - gradlew sonarqube -Dsonar.organization=ankitprahladsoni-github -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=cfaeee22d23ec0797c5c99ab3e09ee3f825cfc1b
