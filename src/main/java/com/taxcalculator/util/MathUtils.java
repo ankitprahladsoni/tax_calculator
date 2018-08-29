@@ -1,10 +1,9 @@
 package com.taxcalculator.util;
 
-public class MathUtils {
+import lombok.experimental.UtilityClass;
 
-    private MathUtils() {
-        throw new IllegalStateException("Utility class");
-    }
+@UtilityClass
+public class MathUtils {
 
     public static double roundOffTax(double number) {
         return Math.ceil(number * 20) / 20;
